@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EntityLayer.Concrete.PetShop>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+<h2>Ürünler</h2>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(event, form) {
+            event.preventDefault(); // Formun otomatik olarak gönderilmesini engeller
+
+            Swal.fire({
+                title: 'Silmek istediğinizden emin misiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'Hayır, iptal et'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // Kullanıcı onaylarsa formu gönderir
+                }
+            });
+        }
+    </script>
+</head>
+<table class="table">
+    <tr>
+        <th>Ürün ID</th>
+        <th>Ürün Adı</th>
+        <th>Ürün Bilgisi</th>
+        <th>Ürün Fotoğrafı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@item.ProductInfo</td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.ProductImage))
+                {
+                    <img src="@item.ProductImage" alt="@item.ProductName" style="width:100px; height:auto;" />
+                }
+            </td>
+           
+             <td>
+                 <form action="/PetShop/DeleteProduct/@item.ProductID" method="post" style="display:inline;" onsubmit="confirmDelete(event, this)">
+                     <button type="submit" class="btn btn-danger">Sil</button>
+                 </form>
+             
+             </td>
+            <td><a href="/PetShop/UpdateProduct/@item.ProductID" class="btn btn-warning">Güncelle</a> </td>
+            
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Yeni Ürün Ekle", "AddProduct")

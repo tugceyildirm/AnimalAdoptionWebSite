@@ -1,0 +1,49 @@
+﻿@model EntityLayer.Concrete.Request
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    var animal = ViewBag.Animal as EntityLayer.Concrete.Animal;
+}
+
+<h2>Talep Oluştur</h2>
+
+<h2>Sahiplendirme Talebi</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.AnimalID)
+
+    <div class="form-group">
+        <label>Hayvan İsmi</label>
+        <p>@animal.AnimalName</p>
+    </div>
+
+    <div class="form-group">
+        <label>Adınız Soyadınız</label>
+        @Html.TextBoxFor(model => model.UserFullName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        @Html.TextBoxFor(model => model.UserEmail, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Telefon Numaranız</label>
+        @Html.TextBoxFor(model => model.UserPhoneNumber, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Talep Açıklaması</label>
+        @Html.TextAreaFor(model => model.RequestDescription, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Talep Gönder</button>
+}
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.SuccessMessage
+    </div>
+}

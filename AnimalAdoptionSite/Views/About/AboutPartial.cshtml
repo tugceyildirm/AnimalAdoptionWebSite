@@ -1,0 +1,90 @@
+﻿@model EntityLayer.Concrete.About
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Yeni Hakkımızda Ekle
+</button>
+
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Hakkımızda Yazı Metin Girişi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("AddAbout", "About", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.AboutID)
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Biz Kimiz?</label>
+                        @Html.EditorFor(model => model.AboutDetails1, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                    <div class="form-group">
+                        <label>Misyon</label>
+                        @Html.EditorFor(model => model.AboutDetails2, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                    <div class="form-group">
+                        <label>Vizyon</label>
+                        @Html.EditorFor(model => model.AboutDetails3, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                    <div class="form-group">
+                        <label>Ne Sunuyoruz?</label>
+                        @Html.EditorFor(model => model.AboutDetails4, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                    <button type="submit" class="btn btn-info">Kaydet</button>
+                </div>
+                @*<div class="modal-body">
+                <div class="form-group">
+                    <label>Biz Kimiz?</label>
+                    <input type="text" name="AboutDetails1" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Misyon</label>
+                    <input type="text" name="AboutDetails2" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Vizyon</label>
+                    <input type="text" name="AboutImg1" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Ne Sunuyoruz?</label>
+                    <input type="text" name="AboutImg2" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-info">Kaydet</button>
+            </div>*@
+            }
+
+        </div>
+    </div>
+</div>
+
+@*<div class="modal" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Hakkımızda Yazı Metin Girişi</h2>
+                </div>
+                <form method="post" action="/About/AddAbout/">
+                    <div class="modal-body">
+
+                        <br />
+                        <label>Biz Kimiz?</label>
+                        <input type="text" name="AboutDetails1" class="form-control" />
+                        <br />
+                        <label>Misyon</label>
+                        <input type="text" name="AboutDetails2" class="form-control" />
+                        <br />
+                        <label>Vizyon</label>
+                        <input type="text" name="AboutImg1" class="form-control" />
+                        <br />
+                        <label>Ne Sunuyoruz?</label>
+                        <input type="text" name="AboutImg2" class="form-control" />
+                        <br />
+                        <button class="btn btn-info">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>*@

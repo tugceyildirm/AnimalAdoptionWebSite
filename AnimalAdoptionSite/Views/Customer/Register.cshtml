@@ -1,0 +1,101 @@
+﻿@model EntityLayer.Concrete.Customer
+
+@{
+    Layout = null;
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Kayıt Ol</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/admin/login-form-19/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    Kayıt Ol
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap py-5">
+                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/admin/login-form-19/images/logos.jpg);"></div>
+                        <h3 class="text-center mb-0">Hoşgeldiniz</h3>
+                        <p class="text-center">Lütfen Bilgilerinizi Giriniz</p>
+                        @if (ViewBag.ErrorMessage != null)
+                        {
+                            <div class="alert alert-danger text-center">
+                                @ViewBag.ErrorMessage
+                            </div>
+                        }
+                        @using (Html.BeginForm("Register", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Username)
+                                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.UserEmail)
+                                @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control" })
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.UserPassword)
+                                @Html.PasswordFor(m => m.UserPassword, new { @class = "form-control" })
+                            </div>
+
+
+                            <div class="form-group d-md-flex">
+                                <div class="w-100 text-md-right">
+                                    <a href="/Login/UserLogin/">Giriş Sayfası</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Kayıt OL</button>
+                            </div>
+                        }
+
+                        @*<div class="w-100 text-center mt-4 text">
+                                <a href="#"> Ana Sayfaya dön</a>
+                            </div>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/admin/login-form-19/js/jquery.min.js"></script>
+    <script src="~/admin/login-form-19/js/popper.js"></script>
+    <script src="~/admin/login-form-19/js/bootstrap.min.js"></script>
+    <script src="~/admin/login-form-19/js/main.js"></script>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '@TempData["SuccessMessage"]',
+                showConfirmButton: false,
+                timer: 1500,
+                didClose: () => {
+                    window.location.href = '@Url.Action("UserLogin", "Login")';
+                }
+            });
+        </script>
+    }
+</body>
+</html>
+

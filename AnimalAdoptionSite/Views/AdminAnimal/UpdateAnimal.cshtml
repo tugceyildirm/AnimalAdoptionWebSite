@@ -1,0 +1,54 @@
+﻿@model EntityLayer.Concrete.Animal
+@{
+    ViewBag.Title = "UpdateAnimal";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+<br />
+<h2>Hayvan Bilgisi Güncelleme</h2>
+
+@using (Html.BeginForm("UpdateAnimal", "AdminAnimal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.AnimalID)
+
+        @Html.Label("Hayvan adı")
+        @Html.TextBoxFor(x => x.AnimalName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.AnimalName)
+        <br />
+
+        @Html.Label("Hayvan türü")
+        @Html.TextBoxFor(x => x.AnimalBreed, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Hayvan Fotoğrafı")
+
+        @if (!string.IsNullOrEmpty(Model.AnimalImg))
+        {
+            <div>
+                <img src="@Url.Content(Model.AnimalImg)" alt="Hayvan Fotoğrafı" style="max-width:200px;max-height:200px;" />
+            </div>
+        }
+        @Html.TextBoxFor(x => x.AnimalImg, new { type = "file", @class = "form-control" })
+        <br />
+        <br />
+        @Html.Label("Hayvan yaşı")
+        @Html.TextBoxFor(x => x.AnimalAge, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Hayvan cinsi")
+        @Html.TextBoxFor(x => x.AnimalType, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Cinsiyet")
+        @Html.TextBoxFor(x => x.AnimalSex, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Hayvan Özellikleri")
+        @Html.TextBoxFor(x => x.AnimalDescription, new { @class = "form-control" })
+        <br />
+
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+    
+}
+

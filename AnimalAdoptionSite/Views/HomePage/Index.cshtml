@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuva Ol Bana - Hoş Geldiniz</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+         
+        }
+
+        .container {
+            text-align: center;
+            padding: 25px 25px;
+        }
+
+        .logo img {
+            max-width: 130px;
+            border-radius: 150px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+  
+            font-size: 2.5rem;
+            color: #17a2b8;
+        }
+
+        p {
+           
+            font-size: 1.2rem;
+        }
+
+            p a {
+                color: #17a2b8;
+                text-decoration: none;
+            }
+
+                p a:hover {
+                    text-decoration: underline;
+                }
+
+        .gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+            .gallery img {
+                max-width: 300px;
+                max-height:350px;
+                margin: 20px;
+                border-radius: 5px;
+            }
+
+        footer {
+            background-color: #f4f6f9;
+            color: #17a2b8;
+            padding: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="~/admin/login-form-19/images/logos.jpg" alt="Yuva Ol Bana">
+        </div>
+        <h1>Yuva Ol Bana'ya Hoş Geldiniz</h1>
+        <p>Siz de harika bir dost edinmek isterseniz <a href="/Animal/Index/">ilanlarımıza</a> bakabilirsiniz.</p>
+        <div class="gallery">
+            <img src="~/img/homepage0.jpeg" alt="Sahiplenilen Hayvan 1">
+            <img src="~/img/homepage1.jpeg" alt="Sahiplenilen Hayvan 2">
+            <img src="~/img/homepage2.jpeg" alt="Sahiplenilen Hayvan 2">
+            <img src="~/img/homepage3.jpeg" alt="Sahiplenilen Hayvan 2">
+
+        </div>
+    </div>
+    <footer class="text-center">
+        <p>&copy; 2024 Yuva Ol Bana. Tüm hakları saklıdır.</p>
+    </footer>
+</body>
+</html>
+
+

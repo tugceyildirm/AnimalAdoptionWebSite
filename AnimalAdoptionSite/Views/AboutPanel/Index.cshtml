@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border: none;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .custom-card-header {
+            background-color: #17a2b8;
+            color: white;
+      ;
+        }
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            color: #17a2b8;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #232020;
+        }
+
+        .text-center {
+            color: #232020;
+            font-weight: 700;
+        }
+    </style>
+
+</head>
+
+<div class="card text-center mb-4">
+    <div class="card-header custom-card-header">
+        <h1 class="m-0" style="font-weight: bold;">Hakkımızda</h1>
+    </div>
+</div>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-6 col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Biz Kimiz?</h5>
+                        <p class="card-text">@item.AboutDetails1</p>
+                        <h5 class="card-title">Misyonumuz</h5>
+                        <p class="card-text">@item.AboutDetails2</p>
+                        <h5 class="card-title">Vizyonumuz</h5>
+                        <p class="card-text">@item.AboutDetails3</p>
+                        <h5 class="card-title">Ne Sunuyoruz?</h5>
+                        <p class="card-text">@item.AboutDetails4</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>

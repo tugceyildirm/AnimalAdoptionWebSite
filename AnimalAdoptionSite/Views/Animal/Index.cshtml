@@ -1,0 +1,116 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Animal>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayvanlar</title>
+    <style>/
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .custom-card-header {
+            background-color: #17a2b8;
+            color: white;
+            border-radius: 5px;
+        }
+        
+        .hayvan-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        
+        .hayvan-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px; /* Kart genişliği */
+            padding: 10px; /* Kart içi boşluk */
+            text-align: center; /* İçeriği ortalamak için */
+            background-color: #fff; /* Arka plan rengi */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .hayvan-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+        .hayvan-photo {
+            width: 100%;
+            height: 250px; 
+            object-fit:cover;
+            border-bottom: 2px solid #ddd; 
+        }
+
+        
+        .hayvan-card h3 {
+            margin: 10px 0;
+            font-size: 1.4em;
+            color: #17a2b8;
+        }
+
+        .hayvan-card p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #000000;
+        }
+        .request-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #17a2b8;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .request-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="card text-center mb-4">
+        <div class="card-header custom-card-header">
+            <h1 class="m-0" style="font-weight: bold;">Sahiplenilmek için Sizi Bekleyen Dostlarımız</h1>
+        </div>
+    </div>
+    <div class="hayvan-container">
+        @foreach (var hayvan in Model)
+        {
+            <div class="hayvan-card">
+                <img src="@hayvan.AnimalImg" alt="Hayvan Fotoğrafı" class="hayvan-photo" />
+                <h3>@hayvan.AnimalName</h3>
+                <p>Yaş: @hayvan.AnimalAge</p>
+                <p>Tür: @hayvan.AnimalBreed</p>
+                <p>Cins: @hayvan.AnimalType</p>
+                <p>Cinsiyet: @hayvan.AnimalSex</p>
+                <p>Özellikler: @hayvan.AnimalDescription</p>
+                <a href="@Url.Action("NewMessage", "UserPanelMessage", new { id = hayvan.AnimalID })" class="request-button">Talep Oluştur</a>
+
+
+            </div>
+        }
+    </div>
+</body>
+</html>

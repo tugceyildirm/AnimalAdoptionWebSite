@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.PetShop
+@{
+    ViewBag.Title = "UpdateProduct";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+<h2>Ürün Güncelleme</h2>
+
+@using (Html.BeginForm("UpdateProduct", "PetShop", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.ProductID)
+
+        @Html.Label("Ürün Adı")
+        @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ProductName)
+        <br />
+
+        @Html.Label("Ürün Bilgisi")
+        @Html.TextBoxFor(x => x.ProductInfo, new { @class = "form-control" })
+
+        <br />
+      
+            @Html.Label("Ürün Fotoğrafı")
+
+            @if (!string.IsNullOrEmpty(Model.ProductImage))
+            {
+                <div>
+                    <img src="@Url.Content(Model.ProductImage)" alt="Ürün Fotoğrafı" style="max-width:200px;max-height:200px;" />
+                </div>
+            }
+            @Html.TextBoxFor(x => x.ProductImage, new { type = "file", @class = "form-control" })
+            <br />
+
+            <button class="btn btn-success">Güncelle</button>
+        </div>
+
+        }
+
+

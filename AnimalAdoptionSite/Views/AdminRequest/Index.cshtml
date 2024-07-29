@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Request>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Talepler</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Hayvan Adı</th>
+            <th>Kullanıcı Adı</th>
+            <th>Kullanıcı Email</th>
+            <th>Telefon Numarası</th>
+            <th>Talep Açıklaması</th>
+            <th>Talep Tarihi</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.AnimalName</td>
+                <td>@request.UserFullName</td>
+                <td>@request.UserEmail</td>
+                <td>@request.UserPhoneNumber</td>
+                <td>@request.RequestDescription</td>
+                <td>@request.RequestDate.ToShortDateString()</td>
+                <td>@(request.IsApproved.HasValue ? (request.IsApproved.Value ? "Onaylandı" : "Reddedildi") : "Beklemede")</td>
+                <td>
+                    @if (!request.IsApproved.HasValue)
+                    {
+                        @Html.ActionLink("Onayla", "Approve", new { id = request.RequestID }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Reddet", "Reject", new { id = request.RequestID }, new { @class = "btn btn-danger" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

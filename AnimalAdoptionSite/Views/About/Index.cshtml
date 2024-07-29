@@ -1,0 +1,76 @@
+﻿@using EntityLayer.Concrete
+@model IEnumerable<EntityLayer.Concrete.About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(event, form) {
+            event.preventDefault(); // Formun otomatik olarak gönderilmesini engeller
+
+            Swal.fire({
+                title: 'Silmek istediğinizden emin misiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'Hayır, iptal et'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // Kullanıcı onaylarsa formu gönderir
+                }
+            });
+        }
+    </script>
+</head>
+<h1 style="font-weight: bold;">Hakkımızda Veri Listesi</h1>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Hakkımda Başlığı</th>
+        <th>Durum</th>
+        <th>Aktiflik Kontrol</th>
+        <th>Sil</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AboutID</td>
+            <td>Başlık</td>
+            <td>@(item.IsActive ? "Aktif" : "Pasif")</td>
+            <td>
+                @if (item.IsActive)
+                {
+
+
+                    <a href="@Url.Action("DeactivateAbout", new { id = item.AboutID })" class="btn btn-danger">Pasif Yap</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("ActivateAbout", new { id = item.AboutID })" class="btn btn-success">Aktif Yap</a>
+                }
+            </td>
+            <td>
+                <form action="/About/DeleteAbout/@item.AboutID" method="post" style="display:inline;" onsubmit="confirmDelete(event, this)">
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                </form>
+               
+
+            </td>
+
+        </tr>
+    }
+</table>
+
+@Html.Action("AboutPartial", "About")

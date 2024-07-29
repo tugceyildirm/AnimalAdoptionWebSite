@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedi, Kuş ve Köpek Bakımı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        section {
+            background: #fff;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #17a2b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="card text-center mb-4">
+        <div class="card-header bg-info text-white">
+            <h1 class="m-0" style="font-weight: bold;">Hayvan Bakımı</h1>
+        </div>
+    </div>
+    <div class="container">
+        <section>
+            <h2>Kedi Bakımı</h2>
+            <p>Kediler bağımsız ve meraklı hayvanlardır. Kedi bakımında dikkat edilmesi gerekenler:</p>
+            <ul>
+                <li>Kaliteli mama ile beslenme</li>
+                <li>Temiz suyun sürekli olarak bulundurulması</li>
+                <li>Düzenli veteriner kontrolleri</li>
+                <li>Tuvalet temizliğine özen gösterilmesi</li>
+                <li>Oyuncaklar ve tırmalama tahtaları ile zihinsel ve fiziksel uyarım</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Kuş Bakımı</h2>
+            <p>Kuşlar sosyal ve enerjik hayvanlardır. Kuş bakımında dikkat edilmesi gerekenler:</p>
+            <ul>
+                <li>Geniş ve temiz bir kafes</li>
+                <li>Dengeli ve çeşitli beslenme</li>
+                <li>Taze suyun sürekli olarak bulundurulması</li>
+                <li>Düzenli kafes temizliği</li>
+                <li>Zihinsel ve fiziksel aktivite için oyuncaklar</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Köpek Bakımı</h2>
+            <p>Köpekler sadık ve sosyal hayvanlardır. Köpek bakımında dikkat edilmesi gerekenler:</p>
+            <ul>
+                <li>Kaliteli mama ile beslenme</li>
+                <li>Temiz suyun sürekli olarak bulundurulması</li>
+                <li>Düzenli egzersiz ve yürüyüş</li>
+                <li>Düzenli veteriner kontrolleri</li>
+                <li>Eğitim ve sosyalleşme</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

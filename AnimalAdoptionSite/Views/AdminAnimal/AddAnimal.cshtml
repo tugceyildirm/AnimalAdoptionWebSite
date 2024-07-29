@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.Animal
+
+@{
+    ViewBag.Title = "AddAnimal";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<h1>Yeni Hayvan Ekleme Sayfası</h1>
+<br />
+
+@using (Html.BeginForm("AddAnimal", "AdminAnimal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnimalName)
+        @Html.EditorFor(model => model.AnimalName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.AnimalName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnimalAge)
+        @Html.EditorFor(model => model.AnimalAge, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        <label for="AnimalImg">Hayvan Fotoğrafı</label>
+        <input type="file" name="AnimalImg" class="form-control" />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnimalBreed)
+        @Html.DropDownListFor(model => model.AnimalBreed, Enum.GetValues(typeof(EntityLayer.Enums.AnimalBreed)).Cast<EntityLayer.Enums.AnimalBreed>().Select(v => new SelectListItem
+        {
+            Text = v.ToString(),
+            Value = v.ToString()
+        }), "Hayvan Türü Seçiniz", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnimalType)
+        @Html.EditorFor(model => model.AnimalType, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnimalSex)
+        @Html.DropDownListFor(model => model.AnimalSex, Enum.GetValues(typeof(EntityLayer.Enums.AnimalSex)).Cast<EntityLayer.Enums.AnimalSex>().Select(v => new SelectListItem
+        {
+            Text = v.ToString(),
+            Value = v.ToString()
+        }), "Cinsiyet Seçiniz", new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnimalDescription)
+        @Html.TextAreaFor(model => model.AnimalDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.AnimalDescription, "", new { @class = "text-danger" })
+    </div>
+
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+
+}

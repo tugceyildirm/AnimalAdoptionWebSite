@@ -1,0 +1,11 @@
+﻿Rebuild started at 13:22...
+1>------ Rebuild All started: Project: EntityLayer, Configuration: Debug Any CPU ------
+1>  EntityLayer -> C:\Users\tueyl\source\repos\AnimalAdoptionSite\EntityLayer\bin\Debug\EntityLayer.dll
+2>------ Rebuild All started: Project: DataAccessLayer, Configuration: Debug Any CPU ------
+2>  DataAccessLayer -> C:\Users\tueyl\source\repos\AnimalAdoptionSite\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+3>------ Rebuild All started: Project: BusinessLayer, Configuration: Debug Any CPU ------
+3>  BusinessLayer -> C:\Users\tueyl\source\repos\AnimalAdoptionSite\BusinessLayer\bin\Debug\BusinessLayer.dll
+4>------ Rebuild All started: Project: AnimalAdoptionSite, Configuration: Debug Any CPU ------
+4>  AnimalAdoptionSite -> C:\Users\tueyl\source\repos\AnimalAdoptionSite\AnimalAdoptionSite\bin\AnimalAdoptionSite.dll
+========== Rebuild All: 4 succeeded, 0 failed, 0 skipped ==========
+========== Rebuild completed at 13:22 and took 02,880 seconds ==========
